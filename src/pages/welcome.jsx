@@ -1,0 +1,23 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import'../styles/Welcome.css';
+function Welcome(){
+    return( <div>
+        <div className="nav"> 
+       
+       <p> The notes</p>
+       <Link to="/login">
+       <button h>login</button></Link>
+        </div>
+        <div className="textarea">
+            <p>A MERN stack notes</p>
+            <Link to="/login">
+        <button>lets go</button></Link>
+        </div>
+        <footer>
+            
+        </footer></div>
+    );
+}
+export default Welcome

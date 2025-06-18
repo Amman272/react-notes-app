@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  background: rgba(30, 30, 30, 0.6);
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.2);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav p {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.nav button {
+  padding: 0.7rem 1.7rem;
+  border: none;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  backdrop-filter: blur(4px);
+}
+.nav button:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+.textarea {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  width: 90vw;
+  max-width: 650px;
+  background: rgba(40, 40, 45, 0.45);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.30);
+  backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  padding: 3rem 2rem;
+}
+
+.textarea p {
+  color: #fff;
+  font-size: 2.2rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+
+.textarea button {
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 28px;
+  background: linear-gradient(90deg, #ff8c00 0%, #ff2d55 100%);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 4px 16px 0 rgba(255,45,85,0.18);
+  transition: background 0.2s, transform 0.2s;
+}
+.textarea button:hover {
+  background: linear-gradient(90deg, #ff2d55 0%, #ff8c00 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+footer {
+  height: 40px;
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+  margin-top: 2rem;
+  opacity: 0.7;
+}

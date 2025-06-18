@@ -1,0 +1,97 @@
+/* Login.css - Dark Theme */
+
+body {
+  background: linear-gradient(120deg, #232526 0%, #414345 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.login-window {
+  background: rgba(28, 28, 32, 0.98);
+  max-width: 350px;
+  margin: 60px auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.38);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+
+.login-window:hover {
+  box-shadow: 0 12px 40px 0 rgba(0,0,0,0.55);
+}
+
+.login-window p {
+  margin: 0.8rem 0 0.4rem 0;
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.login-window input[type="text"],
+.login-window input[type="password"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #23242a;
+  color: #f3f3f3;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.login-window input:focus {
+  border-color: #5f9ea0;
+  background: #272833;
+}
+
+.login-window input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+.login-window button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #5f9ea0;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 10px rgba(95, 158, 160, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-window button:hover {
+  background-color: #498a8c;
+  box-shadow: 0 6px 14px rgba(73, 138, 140, 0.6);
+}
+
+.login-window .switch-link {
+  color: #5f9ea0;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+  font-size: 0.98rem;
+  transition: color 0.2s;
+}
+
+.login-window .switch-link:hover {
+  color: #e0e0e0;
+}
+
+@media (max-width: 430px) {
+  .login-window {
+    max-width: 95vw;
+    padding: 1.5rem 0.8rem;
+  }
+}
