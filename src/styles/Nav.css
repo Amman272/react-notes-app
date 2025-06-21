@@ -1,0 +1,31 @@
+.bg {
+  background-color: #1e1e2f;
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  flex-wrap: wrap; /* Allows wrapping on small screens */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg p {
+  margin: 8px 0;
+  font-size: 18px;
+  flex: 1 1 100%; /* Full width on small screens */
+  text-align: center;
+}
+
+/* On larger screens, align items horizontally */
+@media (min-width: 600px) {
+  .bg p {
+    flex: unset;
+    text-align: left;
+    margin: 0;
+  }
+
+  .bg {
+    flex-wrap: nowrap;
+  }
+}
