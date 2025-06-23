@@ -9,7 +9,7 @@ function Dashboard(){
     return(
         <div> <Nav />
        <h1>Welcome, {user.name}!</h1>
-      <p>Email: {user.email}</p>
+     <p>you have written so far(some num) notes  and (some number here) letters</p>
          <button onClick={() => navigate('/Notes')}>Go to Notes</button>
         </div>
       
