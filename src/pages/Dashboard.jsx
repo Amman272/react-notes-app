@@ -2,6 +2,7 @@
 import Nav from "../components/Nav"
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import '../styles/Dashboard.css'
 function Dashboard(){
     const navigate = useNavigate();
     const user=JSON.parse(localStorage.getItem("user"));

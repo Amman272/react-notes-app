@@ -28,4 +28,16 @@ console.log(result.rows.map(row=>row.note_id));
         console.log(error)
     }
 })
+
+
+
+router.post('/removeNote', async (req,res)=>{
+    const{id,user}=req.body
+    try {
+         await db.query("delete from notes where note_id=$1 and user_id=$2",[id,user])
+    } catch (error) {
+    res.status(200).send({ message: "Note deleted successfully" });
+    }
+   
+})
 export default  router
