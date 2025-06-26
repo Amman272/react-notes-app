@@ -117,7 +117,7 @@ async function getNotesTitle(params) {
   return (
     <>
       <Nav />
-      <button onClick={getNotesTitle}>refresh</button>
+    
       <div className="container">
         <div className="leftside">
           {/* <p>notes here</p> */}

@@ -1,18 +1,25 @@
-
-import'../styles/Nav.css';
-function Nav(){
-     const user=JSON.parse(localStorage.getItem("user"));
-    return(
-    <div>
-        <div  className="bg">
-        <p>My Notes app</p>
-        <p>wellcome {user.name}</p>
-        <p>about me</p>
-        <button> log out</button>
-
-        </div>
-        
-    </div>
-    )
+import "../styles/Nav.css";
+import { useNavigate } from "react-router-dom";
+function Nav() {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+  function logout() {
+    localStorage.clear();
+    navigate("/");
+  }
+ return (
+    <nav className="nav-bar">
+      <div className="nav-content">
+        <span className="nav-logo">My Notes App</span>
+        <span className="nav-user">
+          {user?.name ? `Welcome, ${user.name}` : ""}
+        </span>
+        <button className="nav-btn" onClick={logout}>
+          Log out
+        </button>
+      </div>
+    </nav>
+  );
 }
-export default Nav
+
+export default Nav;

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Make sure the parent container and rightside fill the viewport */
+.container {
+  display: flex;
+  min-height: 80vh;
+  margin: 2rem auto;
+  max-width: 1200px;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(49,130,206,0.13);
+  background: rgba(44, 63, 109, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+/* Right panel fills available space */
+.rightside {
+  flex: 2 1 600px;
+  padding: 2.5rem 2rem;
+  background: rgba(44, 63, 109, 0.19);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-width: 0;
+  height: 100%;
+}
+
+/* Editor root stretches to fill parent */
+.simple-editor-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+/* Save button */
+.simple-editor-save-btn {
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(49,130,206,0.13);
+  margin-bottom: 1.5rem;
+  align-self: flex-end;
+  transition: background 0.2s, transform 0.13s;
+}
+
+.simple-editor-save-btn:hover {
+  background: #2561a9;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Editor box fills all available space */
+.simple-editor-box {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 63, 109, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(49,130,206,0.13);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* WYSIWYG editor area fills vertical space */
+.simple-editor-box .rsw-editor {
+  flex: 1 1 auto;
+  width: 100% !important;
+  min-height: 300px;
+  height: 100%;
+  background: #181f2a !important;
+  color: #e2e8f0 !important;
+  border: 1.5px solid #3182ce !important;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.08rem;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Toolbar glassy look */
+.simple-editor-box .rsw-toolbar {
+  background: rgba(44, 63, 109, 0.18) !important;
+  border-radius: 10px 10px 0 0;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(49,130,206,0.07);
+}
+
+/* Preview area */
+.simple-editor-preview {
+  background: #111b2a;
+  padding: 1rem;
+  color: #c0f6c0;
+  border-radius: 8px;
+  margin-top: 20px;
+  min-height: 80px;
+  font-size: 1.05rem;
+  word-break: break-word;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    min-height: unset;
+    max-width: 98vw;
+    margin: 1rem auto;
+  }
+  .rightside {
+    padding: 1.2rem 0.7rem;
+  }
+  .simple-editor-box {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+}

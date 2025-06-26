@@ -1,97 +1,198 @@
-/* Login.css - Dark Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-body {
-  background: linear-gradient(120deg, #232526 0%, #414345 100%);
+/* Root styles for glass and blue theme */
+.login-root {
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #e3f0ff 0%, #d7eaff 100%);
+  font-family: 'Inter', sans-serif;
 }
 
+/* Glass card for login window */
 .login-window {
-  background: rgba(28, 28, 32, 0.98);
-  max-width: 350px;
-  margin: 60px auto;
-  padding: 2.5rem 2rem 2rem 2rem;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.38);
+  width: 100%;
+  max-width: 370px;
+  padding: 2.5rem 2rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.3s;
+  gap: 1.1rem;
+  background: rgba(255,255,255,0.22);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(49,130,206,0.13);
+  border: 1px solid rgba(255,255,255,0.32);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: #1a2332;
+  transition: background 0.3s, color 0.3s;
 }
 
-.login-window:hover {
-  box-shadow: 0 12px 40px 0 rgba(0,0,0,0.55);
+.login-window h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3182ce;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
 }
 
-.login-window p {
-  margin: 0.8rem 0 0.4rem 0;
-  color: #e0e0e0;
+.login-window label {
   font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 0.2rem;
   font-weight: 500;
 }
 
-.login-window input[type="text"],
-.login-window input[type="password"] {
+.login-window input {
   width: 100%;
   padding: 0.7rem 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #333;
-  border-radius: 8px;
-  background: #23242a;
-  color: #f3f3f3;
+  border-radius: 12px;
+  border: 1px solid rgba(49,130,206,0.11);
+  background: rgba(255,255,255,0.13);
+  color: #1a2332;
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 0.3rem;
+  transition: border 0.2s;
 }
 
 .login-window input:focus {
-  border-color: #5f9ea0;
-  background: #272833;
+  border-color: #3182ce;
 }
 
-.login-window input::placeholder {
-  color: #888;
-  opacity: 1;
-}
-
-.login-window button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #5f9ea0;
+.primary-btn {
+  background: #3182ce;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  border-radius: 14px;
+  padding: 0.9rem 0;
+  font-size: 1.08rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 0.5rem;
-  box-shadow: 0 4px 10px rgba(95, 158, 160, 0.4);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 0.7rem;
+  box-shadow: 0 8px 32px rgba(49,130,206,0.10);
+  transition: background 0.2s, transform 0.13s;
 }
 
-.login-window button:hover {
-  background-color: #498a8c;
-  box-shadow: 0 6px 14px rgba(73, 138, 140, 0.6);
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-.login-window .switch-link {
-  color: #5f9ea0;
+.primary-btn:hover:enabled {
+  background: #2561a9;
+  transform: translateY(-2px) scale(1.03);
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.97rem;
+  color: #718096;
+  margin-top: 0.3rem;
+}
+
+.switch-link {
+  background: none;
+  border: none;
+  color: #3182ce;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
-  margin-top: 0.5rem;
-  font-size: 0.98rem;
+  font-size: 1rem;
   transition: color 0.2s;
+  padding: 0;
 }
 
-.login-window .switch-link:hover {
-  color: #e0e0e0;
+.switch-link:hover {
+  color: #2561a9;
 }
 
-@media (max-width: 430px) {
+.login-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.1rem;
+}
+
+.secondary-btn {
+  background: none;
+  border: 1.5px solid #3182ce;
+  color: #3182ce;
+  border-radius: 13px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.secondary-btn:hover {
+  background: #e3f0ff;
+  color: #2561a9;
+}
+
+/* Dark mode support (if parent adds .dark to .login-root) */
+.login-root.dark {
+  background: linear-gradient(120deg, #1c2331 0%, #2a3550 100%);
+}
+
+.login-root.dark .login-window {
+  background: rgba(44, 63, 109, 0.22);
+  color: #f7fafd;
+  border: 1px solid rgba(49,130,206,0.19);
+}
+
+.login-root.dark .login-window h1 {
+  color: #7cc0ff;
+}
+
+.login-root.dark .login-window label {
+  color: #b1c9e6;
+}
+
+.login-root.dark .login-window input {
+  background: rgba(44, 63, 109, 0.19);
+  color: #f7fafd;
+  border-color: rgba(49,130,206,0.19);
+}
+
+.login-root.dark .primary-btn {
+  background: #2561a9;
+}
+
+.login-root.dark .primary-btn:hover:enabled {
+  background: #3182ce;
+}
+
+.login-root.dark .switch-row {
+  color: #b1c9e6;
+}
+
+.login-root.dark .switch-link {
+  color: #7cc0ff;
+}
+
+.login-root.dark .switch-link:hover {
+  color: #a3d8ff;
+}
+
+.login-root.dark .secondary-btn {
+  color: #7cc0ff;
+  border-color: #7cc0ff;
+  background: none;
+}
+
+.login-root.dark .secondary-btn:hover {
+  background: #22304a;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
   .login-window {
-    max-width: 95vw;
-    padding: 1.5rem 0.8rem;
+    padding: 2rem 0.7rem 1.2rem 0.7rem;
+    max-width: 98vw;
   }
 }
