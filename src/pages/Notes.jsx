@@ -3,36 +3,29 @@ import Nav from "../components/Nav";
 import "../styles/Notes.css";
 import ContentBox from "../components/ContentBox";
 import axios from "axios";
-import { div, p } from "framer-motion/client";
 
 function Notes() {
   useEffect(() => {
     getNotesTitle();
   }, []);
 
+
   const [popup, setpopup] = useState(false);
   const [text, settext] = useState("");
   const [titles, setttiles] = useState([]);
   const [notedata, setnotedata] = useState([]);
   const [selectedNote, SetselectedNote] = useState(null);
+  const [content, setcontent] = useState("");
+  const user = JSON.parse(localStorage.getItem("user"));
   // //////////////////////////////////////////////////////////////
-  async function handleCreate() {
-    setpopup(false);
-    const user = JSON.parse(localStorage.getItem("user"));
-    const id = user.id;
-    try {
-      await axios.post("http://localhost:3000/notes/newNotes", {
-        title: text,
-        id: id,
-      });
-    } catch (error) {
-      console.log(error);
-    } finally {
-      await getNotesTitle();
-    }
+    useEffect(() => {
+  if (selectedNote !== null) {
+    getContent();
   }
+}, [selectedNote]); 
+/////////////////////////////////////////
 
-  async function getNotesTitle(params) {
+async function getNotesTitle(params) {
     const user = JSON.parse(localStorage.getItem("user"));
     const id = user.id;
     let result;
@@ -56,9 +49,31 @@ function Notes() {
       title: title,
     }));
     console.log("going to send data to setnote data");
-    setnotedata(zipped);
+      setnotedata(zipped);
     console.log("sent data to setnote data");
   }
+
+
+  async function handleCreate() { 
+    console.log('functionclicked')
+  try {
+    await axios.post("http://localhost:3000/notes/newNotes", {
+      title: text,
+      id: user.id,
+    });
+    
+    await getNotesTitle(); // Fetch updated list BEFORE UI updates
+    console.log('try excuated');
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setpopup(false); // Move UI update here
+    settext("");
+    console.log('finally excuated');
+  }
+}
+
+  
 
   async function removeNote(note_id) {
     console.log("delete button clicked and function called");
@@ -69,19 +84,36 @@ function Notes() {
         id: note_id,
         user: user.id,
       });
-      console.log("post done");
+    
 
-      console.log("note deleted");
-      getNotesTitle();
+      
+       await getNotesTitle();
+       if(selectedNote===note_id){
+        SetselectedNote===note_id;
+        setcontent("")
+       }
     } catch (error) {
       console.log(error);
-      await getNotesTitle();
+      getNotesTitle();
     } finally {
       console.log("finallly block excuated");
     }
   }
-  function contentEdit() {}
-
+  async function getContent() {
+    setcontent("loading....")
+    try {
+      const res = await axios.post("http://localhost:3000/notes/getcontent", {
+        noteID: selectedNote,
+        userID: user.id,
+      });
+      console.log(res.data);
+     setcontent(res.data.content);
+      console.log('set content triggered')
+    } catch (error) {}
+  }
+  function handleSetContent(content) {
+    setcontent(content);
+  }
   return (
     <>
       <Nav />
@@ -96,12 +128,13 @@ function Notes() {
                   key={note.note_id}
                   onClick={() => {
                     SetselectedNote(note.note_id);
-                    console.log(`selected note id ${note.note_id}`);
+                   
                   }}
                 >
                   <p>
                     {note.note_id} {note.title}{" "}
-                    <button onClick={() => removeNote(note.note_id)}>❌</button>
+                    <button onClick={(e) => { e.stopPropagation();
+                    removeNote(note.note_id)}}>❌</button>
                   </p>
                   <h3></h3>
                 </div>
@@ -119,7 +152,11 @@ function Notes() {
           </button>
         </div>
         <div className="rightside">
-          <ContentBox note_id={selectedNote}/>
+          <ContentBox
+            note_id={selectedNote}
+            content={content}
+            onContent={handleSetContent}
+          />
         </div>
 
         {popup && (
