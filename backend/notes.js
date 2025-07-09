@@ -80,8 +80,9 @@ router.post("/getcontent", async (req, res) => {
       [userID, noteID]
     );
     console.log(result.rows);
-    res.json({content:result.rows[0].content});
-    res.status(201).json({ message: "content recived succcesfully" }); // Use 201 
+    //res.json({content:result.rows[0].content});
+  res.status(200).json({ content: result.rows[0].content });
+
   } catch (error) {
     console.log(error);
     
