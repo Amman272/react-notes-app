@@ -20,7 +20,7 @@ router.post("/prompt", async (req, res) => {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }); // or "gemini-1.5-pro"
 
-    const result = await model.generateContent(prompt+`give ans in markdown format even for line breaks`);
+    const result = await model.generateContent(prompt+`give ans in markdown format even for line breaks but donnt menstion it `);
     const text = result.response.text();
 
     console.log("AI response:", text);

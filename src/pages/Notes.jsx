@@ -100,7 +100,7 @@ async function getNotesTitle(params) {
     }
   }
   async function getContent() {
-    setcontent("loading....")
+    //setcontent("loading....")
     try {
       const res = await axios.post("http://localhost:3000/notes/getcontent", {
         noteID: selectedNote,

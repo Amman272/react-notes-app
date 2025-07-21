@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Editor, EditorProvider } from "react-simple-wysiwyg";
 import "../styles/simpleeditor.css";
-
+import { htmlToText } from 'html-to-text';
 import { marked } from "marked";
 
 function SimpleEditor(props) {
@@ -54,7 +54,9 @@ function SimpleEditor(props) {
         className="simple-editor-save-btn"
         onClick={() => {
           setAipop(true);
-          setPrompt(props.content);
+const html = props.content;
+const text =htmlToText(html)
+          setPrompt(text);
         }}
       >
         Ask AI

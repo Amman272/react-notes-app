@@ -89,4 +89,29 @@ router.post("/getcontent", async (req, res) => {
   }
 });
 
+router.post("/getNumTitle",async (req,res)=>{
+  const userID= req.body.userID;
+  try{
+    const result= await db.query("select count(*) from notes where user_id =$1",[userID]);
+    const count =result.rows[0].count
+res.status(200).json({ count });
+
+      }
+  catch(e){
+    console.log(e)
+  }
+})
+router.post('/getall',async(req,res)=>{
+    const userID= req.body.userID;
+    try{
+       const result= await db.query("select content from notes where user_id =$1",[userID]);
+       const contents = result.rows.map(row => row.content || ""); // default to "" if null
+    const totalLetters = contents.reduce((sum, text) => sum + text.length, 0);
+
+    res.status(200).json({ totalLetters });
+    }
+    catch(e){
+      console.log(e)
+    }
+})
 export default router;
