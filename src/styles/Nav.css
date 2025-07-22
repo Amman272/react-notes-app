@@ -37,39 +37,6 @@
   position: relative;
 }
 
-.theme-toggle {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background: var(--nav-bg-light);
-  border: 1px solid var(--nav-border-light);
-  border-radius: 12px;
-  padding: 0.75rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--nav-shadow-light);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.05);
-  box-shadow: var(--nav-shadow-dark);
-}
-
-[data-theme="dark"] .theme-toggle {
-  background: var(--nav-bg-dark);
-  border-color: var(--nav-border-dark);
-  color: var(--nav-text-dark);
-}
-
 .nav-logo {
   font-weight: 700;
   font-size: 1.5rem;

@@ -1,22 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ThemeToggle from "../components/ThemeToggle";
 import "../styles/Welcome.css";
 
 function Welcome() {
-  const [darkMode, setDarkMode] = useState(false);
-
   return (
-    <div className={`welcome-root${darkMode ? " dark" : ""}`}>
+    <div className="welcome-root">
+      <ThemeToggle />
       <nav className="nav">
         <span className="logo">NoteVault</span>
         <div className="nav-actions">
-          <button
-            className="theme-toggle"
-            aria-label="Toggle dark mode"
-            onClick={() => setDarkMode((d) => !d)}
-          >
-            {darkMode ? "🌙" : "☀️"}
-          </button>
           <Link to="/login">
             <button className="nav-btn" aria-label="Login">
               Login

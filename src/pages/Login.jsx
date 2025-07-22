@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import ThemeToggle from "../components/ThemeToggle";
 
 import "../styles/Login.css";
 
 function Login() {
-  const [darkMode, setDarkMode] = useState(false);
   const [isres, setisres] = useState(true);
   const navigate = useNavigate();
 
@@ -32,14 +32,8 @@ function Login() {
     }
   }
   return(
-        <div className={`login-root${darkMode ? " dark" : ""}`}>
-            <button
-                className="theme-toggle"
-                onClick={() => setDarkMode(d => !d)}
-                aria-label="Toggle dark mode"
-            >
-                {darkMode ? "🌙" : "☀️"}
-            </button>
+        <div className="login-root">
+            <ThemeToggle />
             <form onSubmit={handlesubmit}>
                 <div className="login-window">
                     <h1>{isres ? "welcome back" : "register yourself"}</h1>
