@@ -47,20 +47,23 @@ function SimpleEditor(props) {
 
   return (
     <div className="simple-editor-root">
-      <button className="simple-editor-save-btn" onClick={saveText}>
-        Save
-      </button>
-      <button
-        className="simple-editor-save-btn"
-        onClick={() => {
-          setAipop(true);
-const html = props.content;
-const text =htmlToText(html)
-          setPrompt(text);
-        }}
-      >
-        Ask AI
-      </button>
+      <div className="editor-actions">
+        <button 
+          className="editor-btn ai" 
+          onClick={() => {
+            setAipop(true);
+            const html = props.content;
+            const text = htmlToText(html);
+            setPrompt(text);
+          }}
+        >
+          🤖 Ask AI
+        </button>
+        <button className="editor-btn save" onClick={saveText}>
+          💾 Save
+        </button>
+      </div>
+      
       <div className="simple-editor-box">
         {" "}
         <EditorProvider>
@@ -69,6 +72,7 @@ const text =htmlToText(html)
             onChange={(e) => props.onContent(e.target.value)}
           />
         </EditorProvider>
+        
         {Aipop && (
           <div className="ai-popup-overlay">
             <div className="ai-popup">
@@ -83,6 +87,7 @@ const text =htmlToText(html)
               >
                 ×
               </button>
+              <h3>AI Assistant</h3>
               <div className="ai-popup-columns">
                 {/* Prompt Column */}
                 <div className="ai-popup-col">
@@ -92,12 +97,15 @@ const text =htmlToText(html)
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="Type your prompt here..."
                   />
-                  <button
-                    onClick={handleSendPrompt}
-                    disabled={loading || !prompt.trim()}
-                  >
-                    {loading ? "Sending..." : "Send"}
-                  </button>
+                  <div className="ai-popup-actions">
+                    <button
+                      className={`ai-popup-btn ${loading ? 'loading' : ''}`}
+                      onClick={handleSendPrompt}
+                      disabled={loading || !prompt.trim()}
+                    >
+                      {loading ? "Sending..." : "🚀 Send"}
+                    </button>
+                  </div>
                 </div>
                 {/* Result Column */}
                 <div className="ai-popup-col">
@@ -107,19 +115,20 @@ const text =htmlToText(html)
                     onChange={(e) => setAiResult(e.target.value)}
                     placeholder="AI result will appear here..."
                   />
-                 
-                  <button
-                    onClick={() => {
-                      const htmlResult = marked(aiResult); // Convert Markdown → HTML
-                      props.onContent(htmlResult); // Update note content with HTML
-                      setAipop(false); // Close popup
-                    }}
-                    disabled={!aiResult.trim()}
-                  >
-                    Copy to Notes
-                  </button>
+                  <div className="ai-popup-actions">
+                    <button
+                      className="ai-popup-btn success"
+                      onClick={() => {
+                        const htmlResult = marked(aiResult);
+                        props.onContent(htmlResult);
+                        setAipop(false);
+                      }}
+                      disabled={!aiResult.trim()}
+                    >
+                      ✅ Copy to Notes
+                    </button>
+                  </div>
                 </div>
-                ~
               </div>
             </div>
           </div>
