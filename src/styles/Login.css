@@ -15,24 +15,24 @@
 /* Theme toggle button */
 .theme-toggle {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: 1rem;
+  right: 1rem;
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
-  padding: 0.75rem;
+  padding: 0.8rem;
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 16px rgba(49, 130, 206, 0.1);
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
 }
 
 .theme-toggle:hover {

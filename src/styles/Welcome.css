@@ -99,9 +99,9 @@
 
 .theme-toggle {
   background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 0.5rem;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.75rem;
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -110,8 +110,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  z-index: 1000;
+  box-shadow: var(--shadow-light);
 }
 
 .theme-toggle:hover {
