@@ -6,9 +6,9 @@
   --bg-primary: linear-gradient(135deg, #f0f4ff 0%, #e6f2ff 100%);
   --bg-secondary: rgba(255, 255, 255, 0.25);
   --bg-tertiary: rgba(255, 255, 255, 0.15);
-  --text-primary: #1a2332;
-  --text-secondary: #4a5568;
-  --text-muted: #718096;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
   --accent-blue: #3182ce;
   --accent-blue-hover: #2c5aa0;
   --border-color: rgba(255, 255, 255, 0.3);
@@ -18,15 +18,15 @@
 }
 
 /* CSS Variables for Dark Mode */
-.welcome-root.dark {
+.welcome-root[data-theme="dark"] {
   --bg-primary: linear-gradient(135deg, #0f1419 0%, #1a202c 100%);
   --bg-secondary: rgba(26, 32, 50, 0.4);
   --bg-tertiary: rgba(26, 32, 50, 0.25);
-  --text-primary: #e2e8f0;
-  --text-secondary: #cbd5e0;
-  --text-muted: #a0aec0;
-  --accent-blue: #63b3ed;
-  --accent-blue-hover: #4299e1;
+  --text-primary: #f1f5f9;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent-blue: #60a5fa;
+  --accent-blue-hover: #3b82f6;
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.3);
   --shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.4);
@@ -38,6 +38,7 @@
   background: var(--bg-secondary);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  color: var(--text-primary);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   box-shadow: var(--shadow-light);
