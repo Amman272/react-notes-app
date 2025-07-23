@@ -24,6 +24,15 @@
   --bg-tertiary: rgba(26, 32, 50, 0.25);
   --text-primary: #e2e8f0;
   --text-secondary: #cbd5e0;
+  --text-muted: #a0aec0;
+  --accent-blue: #63b3ed;
+  --accent-blue-hover: #4299e1;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
 /* Glassmorphism Base Class */
 .glass-card {
   background: var(--bg-secondary);
