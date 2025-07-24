@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../styles/Dashboard.css';
 import axios from "axios";
+
 function Dashboard(){
     const navigate = useNavigate();
     const user=JSON.parse(localStorage.getItem("user"));
@@ -35,9 +36,13 @@ settitle(result.data.count);
         <div className="dashboard-root">
          <Nav />
          <div className="dashboard-content">
-       <h1>Welcome, {user.name}!</h1>
-     <p>you have written so far {title} notes  and {content} characters</p>
-         <button className="dashboard-btn" onClick={() => navigate('/Notes')}>Go to Notes</button>
+           <div className="dashboard-card">
+             <h1>Welcome, {user.name}!</h1>
+             <div className="dashboard-stats">
+               <p>You have written <span className="stats-highlight">{title}</span> notes and <span className="stats-highlight">{content}</span> characters so far!</p>
+             </div>
+             <button className="dashboard-btn" onClick={() => navigate('/Notes')}>Go to Notes</button>
+           </div>
         </div>
       </div>
     )

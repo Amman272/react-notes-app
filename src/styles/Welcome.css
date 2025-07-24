@@ -67,7 +67,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   background: var(--bg-tertiary);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -76,6 +76,7 @@
   top: 0;
   z-index: 100;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -120,12 +121,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   align-items: center;
   flex: 1;
-  min-height: 60vh;
+  min-height: calc(100vh - 200px);
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -319,12 +321,16 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .nav {
+    padding: 0.75rem 1rem;
+  }
+  
   .hero {
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 2rem 1rem;
+    padding: 1rem;
     text-align: center;
-    min-height: 50vh;
+    min-height: calc(100vh - 150px);
   }
   
   .hero-content h1 {
@@ -364,6 +370,15 @@
 }
 
 @media (max-width: 480px) {
+  .nav {
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
   .hero-content h1 {
     font-size: 2rem;
   }
