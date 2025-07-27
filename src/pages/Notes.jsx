@@ -120,77 +120,104 @@ async function getNotesTitle(params) {
     
       <div className="container">
         <div className="leftside">
+          <div className="sidebar-header">
+            <h2 className="sidebar-title">My Notes</h2>
+            <button
+              className="add-note-btn"
+              onClick={() => setpopup(true)}
+            >
+              + New Note
+            </button>
+          </div>
+          
           {/* <p>notes here</p> */}
           <div className="title_elements">
             {notedata.map((note) => {
               return (
-                <div
+                <div 
+                  className={`note-item ${selectedNote === note.note_id ? 'active' : ''}`}
                   key={note.note_id}
                   onClick={() => {
                     SetselectedNote(note.note_id);
                    
                   }}
                 >
-                  <p>
-                    {note.note_id} {note.title}{" "}
-                    <button onClick={(e) => { e.stopPropagation();
-                    removeNote(note.note_id)}}>❌</button>
-                  </p>
-                  <h3></h3>
+                  <div className="note-content">
+                    <h3 className="note-title">{note.title}</h3>
+                    {/* <p className="note-id">ID: {note.note_id}</p> */}
+                  </div>
+                  <button 
+                    className="delete-btn"
+                    onClick={(e) => { 
+                      e.stopPropagation();
+                      removeNote(note.note_id);
+                    }}
+                    title="Delete note"
+                  >
+                    🗑️
+                  </button>
                 </div>
               );
             })}
           </div>
-
-          {/* bottom */}
-          <button
-            onClick={() => {
-              setpopup(true);
-            }}
-          >
-            add new
-          </button>
         </div>
+        
         <div className="rightside">
-          <ContentBox
-            note_id={selectedNote}
-            content={content}
-            onContent={handleSetContent}
-          />
+          {selectedNote ? (
+            <ContentBox
+              note_id={selectedNote}
+              content={content}
+              onContent={handleSetContent}
+            />
+          ) : (
+            <div className="content-placeholder">
+              <div className="content-placeholder-icon">📝</div>
+              <h3>Select a note to start editing</h3>
+              <p>Choose a note from the sidebar or create a new one to get started.</p>
+            </div>
+          )}
         </div>
 
         {popup && (
           <div className="popup-overlay">
             <div className="popup">
               <button
-                className="close button"
-                onClick={() => {
-                  setpopup(false);
-                }}
+                className="popup-close"
+                onClick={() => setpopup(false)}
+                title="Close"
               >
-                X
+                ×
               </button>
-              <p>enter the name of your new note</p>
+              <h3>Create New Note</h3>
 
               <input
                 value={text}
                 type="text"
                 name="newnote"
-                onChange={(event) => {
-                  settext(event.target.value);
-                }}
-                placeholder="note title"
-              />
-              <button
+                onChange={(event) => settext(event.target.value)}
+                placeholder="Enter note title..."
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
                     handleCreate();
                   }
                 }}
-                onClick={handleCreate}
-              >
-                create
-              </button>
+              />
+              
+              <div className="popup-actions">
+                <button 
+                  className="popup-btn secondary"
+                  onClick={() => setpopup(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="popup-btn primary"
+                  onClick={handleCreate}
+                  disabled={!text.trim()}
+                >
+                  Create Note
+                </button>
+              </div>
             </div>
           </div>
         )}

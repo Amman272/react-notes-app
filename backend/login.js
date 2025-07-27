@@ -13,6 +13,7 @@ try {
 } catch (error) {
  res.status(500)
    console.log(error)
+    res.status(500).send({ message: error });
 }
     }else{
         try {
@@ -27,7 +28,9 @@ try {
                 console.log('data sent to frontend')
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            res.status(500).send({ message: error });
+
         }
     }
 }
