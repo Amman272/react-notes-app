@@ -5,7 +5,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const router = express.Router();
 
 // Load API key from env (you can also hardcode if testing)
-const GEMINI_API_KEY = "AIzaSyDMUeqElSxNq4pnu-5dGz1gFe7AtCrwexI"; // Replace with your real key
+const GEMINI_API_KEY = ""; // Replace with your real key
 
 // Initialize Gemini SDK
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
